@@ -1,0 +1,25 @@
+{
+  "name": "gamez",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:schema": "psql -d gamez -f db/schema.sql",
+    "db:seed": "psql -d gamez -f db/seed.sql",
+    "db:reset": "npm run db:schema && npm run db:seed",
+    "dev": "node --watch --env-file=.env server.js"
+  },
+  "imports": {
+    "#*": "./*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "pg": "^8.16.0"
+  }
+}

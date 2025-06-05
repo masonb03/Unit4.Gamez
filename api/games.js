@@ -2,7 +2,12 @@ import express from "express"
 const router = express.Router()
 export default router;
 
+import { verifyToken } from "#middleware/authMiddleware";
 import { getGames, getGame, createGame, updateGame, deleteGame } from "../db/queries/games.js"
+
+router.get('/protected', verifyToken, (req, res) =>{
+    res.json({message: `Greetings, ${req.user.name}! This is a protected route.`})
+});
 
 router.route('/').get(async(req, res) =>{
     const games = await getGames();

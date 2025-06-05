@@ -2,6 +2,7 @@ import express from "express"
 const app = express();
 import gamesRouter from "./api/games.js"
 import platformsRouter from "./api/platforms.js"
+import authRoutes from "./api/auth.js";
 
 
 app.use(express.json())
@@ -11,6 +12,7 @@ app.use((req, res, next) =>{
     next()
 })
 
+app.use("/auth", authRoutes)
 app.use("/games", gamesRouter)
 app.use("/platforms", platformsRouter)
 
